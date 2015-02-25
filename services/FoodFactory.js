@@ -2,12 +2,12 @@ pizzaIceCream.factory("FoodFactory", function FoodFactory() {
   var factory = {};
 
   factory.totalPrice = function(quantity, price) {
-      var cost = factory.quantity * factory.price;
+    var cost = quantity * price;
 
-      factory.quantity = null;
+    // factory.quantity = null;
 
-      // return cost;
-    };
-  }
+    factory.totalCost = cost
+  };
+
   return factory;
 });

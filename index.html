@@ -6,8 +6,7 @@
     <script src="lib/angular.js"></script>
     <script src="app.js"></script>
     <script src="controllers/PizzasController.js"></script>
-    <script src="controllers/IceCreamController.js"></script>
-    <script src="services/PricingFactory.js"></script>
+    <script src="services/FoodFactory.js"></script>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   </head>
@@ -19,19 +18,20 @@
           <div class="col-md-6">
             <div class="well">
               <h3>Slices</h3>
-              <form ng-submit="FoodFactory.totalPrice()" class="form-inline" role="form">
+              <form ng-submit="FoodFactory.totalPrice(quantity, price)" class="form-inline" role="form">
                 <div class="form-group">
-                  <input ng-model="FoodFactory.quantity" type="text" class="form-control" placeholder="Enter number of slices">
+                  <input ng-model="quantity" type="text" class="form-control" placeholder="Enter number of slices">
                 </div>
-                <button type="submit" class="btn btn-default">Enter</button>
+                <button ng-click=" test = true" type="submit" class="btn btn-default">Enter</button>
               </form>
-              <h3>Total:</h3>
-
-                <p ng-repeat="item in pizzas">{{item.quantity}} {{item.cost}}</p>
+              <div ng-show="test">
+                <h3>Your total for {{quantity}} slices:</h3>
+                <h1>${{FoodFactory.totalCost}}</h1>
+              </div>
             </div>
           </div>
 
-          <div ng-controller="PizzaCtrl">
+          <div ng-controller="PizzasCtrl">
             <div class="col-md-6">
               <div class="well">
                 <h3>Scoops</h3>
